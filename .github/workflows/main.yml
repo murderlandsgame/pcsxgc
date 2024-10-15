@@ -64,48 +64,54 @@ jobs:
       run: |
         mkdir build_wii
         cmake -B build_wii -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoWii -DGPU_PLUGIN=Peops
-        cmake --build build_wii
-        mv build_wii/WiiSX.dol release/apps/wiiSX/boot.dol
+        cd build_wii
+        make -j42069
+        mv WiiSX.dol release_wii/apps/wiiSX/boot.dol
       working-directory: pcsxgc
 
     - name: Build WiiSX (gx gpu)
       run: |
         mkdir build_wii_gx
         cmake -B build_wii_gx -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoWii -DGPU_PLUGIN=PeopsGX
-        cmake --build build_wii_gx
-        mv build_wii_gx/WiiSX.dol release_gx/apps/wiiSX/boot.dol
+        cd build_wii_gx
+        make -j42069
+        mv WiiSX.dol release_wii_gx/apps/wiiSX/boot.dol
       working-directory: pcsxgc
 
     - name: Build WiiSX (unai gpu)
       run: |
         mkdir build_wii_unai
         cmake -B build_wii_unai -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoWii -DGPU_PLUGIN=Unai
-        cmake --build build_wii_unai
-        mv build_wii_unai/WiiSX.dol release_unai/apps/wiiSX/boot.dol
+        cd build_wii_unai
+        make -j42069
+        mv WiiSX.dol release_wii_unai/apps/wiiSX/boot.dol
       working-directory: pcsxgc
 
     - name: Build CubeSX (soft gfx)
       run: |
         mkdir build_cube
         cmake -B build_cube -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoGameCube -DGPU_PLUGIN=Peops
-        cmake --build build_cube
-        mv build_cube/CubeSX.dol release/CubeSX.dol
+        cd build_cube
+        make -j42069
+        mv CubeSX.dol release_soft/CubeSX.dol
       working-directory: pcsxgc
 
     - name: Build CubeSX (gx gpu)
       run: |
         mkdir build_cube_gx
         cmake -B build_cube_gx -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoGameCube -DGPU_PLUGIN=PeopsGX
-        cmake --build build_cube_gx
-        mv build_cube_gx/CubeSX.dol release_gx/CubeSX.dol
+        cd build_cube_gx
+        make -j42069
+        mv CubeSX.dol release_gx/CubeSX.dol
       working-directory: pcsxgc
 
     - name: Build CubeSX (unai gpu)
       run: |
         mkdir build_cube_unai
         cmake -B build_cube_unai -DCMAKE_BUILD_TYPE=None -DWIISX_TARGET=NintendoGameCube -DGPU_PLUGIN=Unai
-        cmake --build build_cube_unai
-        mv build_cube_unai/CubeSX.dol release_unai/CubeSX.dol
+        cd build_cube_unai
+        make -j42069
+        mv CubeSX.dol release_unai/CubeSX.dol
       working-directory: pcsxgc
 
     - name: Upload soft (Peops) CubeSX/WiiSX
