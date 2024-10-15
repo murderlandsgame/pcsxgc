@@ -374,7 +374,7 @@ int _OpenPlugins() {
 ///
 // GX stuff
 ///
-#define FB_MAX_SIZE (640 * 528 * 4)
+#define FB_MAX_SIZE (3840 * 2160 * 4)
 static unsigned char	GXtexture[FB_MAX_SIZE] __attribute__((aligned(32)));
 extern u32* xfb[3];	/*** Framebuffers ***/
 extern char text[DEBUG_TEXT_HEIGHT][DEBUG_TEXT_WIDTH]; /*** DEBUG textbuffer ***/
@@ -820,7 +820,7 @@ void pl_timing_prepare(int is_pal_)
 	frame_interval1024 = is_pal ? 20000*1024 : 17066667;
 
 	// used by P.E.Op.S. frameskip code
-	gc_rearmed_cbs.gpu_peops.fFrameRateHz = is_pal ? 50.0f : 59.94f;
+	gc_rearmed_cbs.gpu_peops.fFrameRateHz = is_pal ? 100 : 120;
 	gc_rearmed_cbs.gpu_peops.dwFrameRateTicks =
 		(100000*100 / (unsigned long)(gc_rearmed_cbs.gpu_peops.fFrameRateHz*100));
 
